@@ -9,7 +9,25 @@
 </head>
 <body>
     <h1> BookIt </h1>
-    <div id="books"></div>
+    <div id="books">
+        <form action="#" class="form-container">
+            <label for="book"><b>Book</b></label>
+            <input id='createBook' type="text" placeholder="Book Name" name="book" required>
+        
+            <label for="author"><b>Author</b></label>
+            <input id='createAuthor' type="text" placeholder="Enter Author" name="author" required>
+
+            <label for="pages"><b>Pages</b></label>
+            <input id='createPages' type="text" placeholder="Enter Page Number" name="pages" required>
+
+            <label for="read"><b>Author</b></label>
+            <input id='didRead'type="text" placeholder="Read book?" name="read" required>
+        
+            <button type="submit" class="btn">Submit</button>
+          </form>
+          <button class="display">Display</button>
+          <div id="bookList"></div>
+    </div>
     <script src="scripts/index.js"></script>
 </body>
 </html>

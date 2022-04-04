@@ -1,3 +1,6 @@
+const create = document.querySelector('.btn');
+const display = document.querySelector('.display');
+
 let libraryBooks = [];
 
 function Book(name, author, pages, read) {
@@ -13,11 +16,21 @@ function addBookToLibrary (name, author, pages, read) {
 }
 
 function displayLibrary() {
-    const html = libraryBooks.map(book => console.log(book));
-    document.getElementById('books').innerHTML = html;
+    document.getElementById('bookList').innerHTML = libraryBooks.map(book => 
+        `<div>
+            <p>Book: ${book.name} Author: ${book.author} Pages: ${book.pages} Read: ${book.read}</p>
+            </div>`).join('');
 }
 
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", "296", "Not read");
-addBookToLibrary("The Hobbit", "J.R.R Tolkien", "296", "Not read");
+create.addEventListener('click', () => {
+    let book = document.querySelector('#createBook').value;
+    let author = document.querySelector('#createAuthor').value;
+    let pages = document.querySelector('#createPages').value;
+    let read = document.querySelector('#didRead').value;
+    addBookToLibrary(book, author, pages, read);
+    console.log(libraryBooks);
+});
 
-displayLibrary();
+display.addEventListener('click', () => {
+    displayLibrary();
+})
