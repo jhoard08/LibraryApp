@@ -1,33 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
     <title>BookIt</title>
-</head>
-<body>
-    <h1> BookIt </h1>
+  </head>
+  <body>
+    <h1>BookIt</h1>
     <div id="books">
-        <form action="#" class="form-container">
-            <label for="book"><b>Book</b></label>
-            <input id='createBook' type="text" placeholder="Book Name" name="book" required>
-        
-            <label for="author"><b>Author</b></label>
-            <input id='createAuthor' type="text" placeholder="Enter Author" name="author" required>
+      <form id="form" action="#" name="form-container">
+        <label for="createBook"><b>Book</b></label>
+        <input
+          id="createBook"
+          type="text"
+          placeholder="Book Name"
+          name="book"
+        />
 
-            <label for="pages"><b>Pages</b></label>
-            <input id='createPages' type="text" placeholder="Enter Page Number" name="pages" required>
+        <label for="createAuthor"><b>Author</b></label>
+        <input
+          id="createAuthor"
+          type="text"
+          placeholder="Enter Author"
+          name="author"
+        />
 
-            <label for="read"><b>Author</b></label>
-            <input id='didRead'type="text" placeholder="Read book?" name="read" required>
-        
-            <button type="submit" class="btn">Submit</button>
-          </form>
-          <button class="display">Display</button>
-          <div id="bookList"></div>
+        <label for="createPages"><b>Pages</b></label>
+        <input
+          id="createPages"
+          type="text"
+          placeholder="Enter Page Number"
+          name="pages"
+        />
+        <label for="read"><b>Read?</b></label>
+        <input type="radio" id="myCheck" name="yes/no" value="Yes" />
+        <label for="myCheck">Yes</label>
+        <input type="radio" id="myCheck" name="yes/no" value="No" />
+        <label for="myCheck">No</label>
+
+        <button type="submit" class="btn" onsubmit="return false">
+          Submit
+        </button>
+      </form>
+      <div id="bookList"></div>
     </div>
     <script src="scripts/index.js"></script>
-</body>
+  </body>
 </html>

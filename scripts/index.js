@@ -10,27 +10,38 @@ function Book(name, author, pages, read) {
     this.read = read;
 }
 
-function addBookToLibrary (name, author, pages, read) {
+function addBookToLibrary(name, author, pages, read) {
     let book = new Book(name, author, pages, read);
     return libraryBooks.push(book);
 }
 
-function displayLibrary() {
-    document.getElementById('bookList').innerHTML = libraryBooks.map(book => 
+function displayLibrary(book) {
+    document.getElementById('bookList').innerHTML = book.map(book =>
         `<div>
             <p>Book: ${book.name} Author: ${book.author} Pages: ${book.pages} Read: ${book.read}</p>
-            </div>`).join('');
+        </div>`).join('');
 }
 
 create.addEventListener('click', () => {
     let book = document.querySelector('#createBook').value;
     let author = document.querySelector('#createAuthor').value;
     let pages = document.querySelector('#createPages').value;
-    let read = document.querySelector('#didRead').value;
-    addBookToLibrary(book, author, pages, read);
-    console.log(libraryBooks);
-});
+    let read = document.querySelectorAll('input[name="yes/no"]');
 
-display.addEventListener('click', () => {
-    displayLibrary();
-})
+    let yesOrNo;
+
+    for (const answer of read) {
+        if (answer.checked) {
+            yesOrNo = answer.value;
+            break
+        }
+    }
+
+    if (book !== "" && author !== "" && pages !== "") {
+        addBookToLibrary(book, author, pages, yesOrNo);
+        document.forms['form-container'].reset();
+        return displayLibrary(libraryBooks);
+        //console.log(libraryBooks);
+    }
+    return alert('Please fill out all the information!')
+});
