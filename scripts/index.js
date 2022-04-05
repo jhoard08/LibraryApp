@@ -17,10 +17,27 @@ function addBookToLibrary(name, author, pages, read) {
 
 function displayLibrary(book) {
     document.getElementById('bookList').innerHTML = book.map(book =>
-        `<div>
-            <p>Book: ${book.name} Author: ${book.author} Pages: ${book.pages} Read: ${book.read}</p>
-        </div>`).join('');
+        `<tr>
+            <td>${book.name}</td>
+            <td>${book.author}</td>
+            <td>${book.pages}</td>
+            <td>${book.read}</td>
+            <td><button type="button" class="btn btn-danger delete">X</button></td>
+        </tr>
+        `).join('');
 }
+
+// Delete element from the DOM
+function deleteBook(target) {
+    if (target.classList.contains('delete')) {
+        target.parentElement.parentElement.remove();
+    }
+}
+
+// Event: Remove book
+document.querySelector('#bookList').addEventListener('click', (e) => {
+    deleteBook(e.target);
+})
 
 create.addEventListener('click', () => {
     let book = document.querySelector('#createBook').value;
@@ -30,15 +47,18 @@ create.addEventListener('click', () => {
 
     let yesOrNo;
 
+    // checks the radio buttons value so it doesn't return the first ID it finds
     for (const answer of read) {
         if (answer.checked) {
             yesOrNo = answer.value;
             break
         }
     }
-
+    // checks to see if any of the data is an empty string 
     if (book !== "" && author !== "" && pages !== "") {
         addBookToLibrary(book, author, pages, yesOrNo);
+
+        //resets form to clear 
         document.forms['form-container'].reset();
         return displayLibrary(libraryBooks);
         //console.log(libraryBooks);
